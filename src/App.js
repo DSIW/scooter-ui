@@ -4,7 +4,7 @@ import './App.css';
 import { RMWCProvider } from 'rmwc/Provider';
 import { ThemeProvider } from 'rmwc/Theme';
 import Toolbar from './Toolbar';
-// import Tile from './Tile';
+import Tile from './Tile';
 import Map from './Map';
 
 class App extends React.Component {
@@ -33,7 +33,10 @@ class App extends React.Component {
           <Toolbar />
 
           <div className="content">
-            <Map markers={this.state.markers} />
+            <Tile style={{ width: '60rem' }}>
+              <Map markers={this.state.markers} />
+            </Tile>
+            <Tile style={{ width: '20rem', marginLeft: '1rem' }} />
           </div>
         </ThemeProvider>
       </RMWCProvider>
