@@ -4,6 +4,7 @@ import { Grid, GridCell } from 'rmwc/Grid';
 import Tile from './Tile';
 import Map from './Map';
 import LineChart from './LineChart';
+import EnergyBarChart from './EnergyBarChart';
 
 class DetailScooterPage extends Component {
   constructor(props) {
@@ -49,6 +50,13 @@ class DetailScooterPage extends Component {
         <GridCell span="4">
           <Tile title="Energy Level" style={{ width: '26rem' }}>
             <LineChart data={markers} x="_request_time" y="energy_level" />
+          </Tile>
+
+          <Tile
+            title="Energy Distribution"
+            style={{ width: '26rem', marginTop: '10px' }}
+          >
+            <EnergyBarChart licensePlate={licensePlate} />
           </Tile>
         </GridCell>
       </Grid>
