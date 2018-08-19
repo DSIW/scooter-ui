@@ -1,6 +1,9 @@
 import * as React from 'react';
+import { Fragment } from 'react';
 
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import Leaflet from 'leaflet';
+import coupPin from './pin-coup.png';
 
 const accessToken =
   'pk.eyJ1IjoiZHNpdyIsImEiOiJjaXB2bmt0M2wwMDVxaHdrc3AwM2N4OHk0In0.kHVayjzVrUycpA2prqRhOg';
@@ -12,7 +15,7 @@ class Map extends React.Component {
   state = {
     lng: 13.432808,
     lat: 52.488734,
-    zoom: 10,
+    zoom: 13,
     markers: []
   };
 
@@ -37,6 +40,13 @@ class Map extends React.Component {
 
     const position = [this.state.lat, this.state.lng];
 
+    const icon = Leaflet.icon({
+      iconUrl: coupPin,
+      iconSize: [40, 50],
+      iconAnchor: [20, 50], // half of icon size
+      popupAnchor: [0, -30]
+    });
+
     return (
       <LeafletMap center={position} zoom={this.state.zoom}>
         <TileLayer
@@ -44,7 +54,7 @@ class Map extends React.Component {
           url={`${url}?access_token=${accessToken}`}
         />
         {markers.map(marker => (
-          <Marker position={marker.position}>
+          <Marker position={marker.position} icon={icon}>
             <Popup>
               {marker.license_plate} ({marker.energy_level}
               %)
