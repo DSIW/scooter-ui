@@ -17,7 +17,7 @@ class Tile extends React.Component {
       <Card style={this.props.style}>
         <div style={{ padding: '0 1rem 1rem 1rem' }}>
           <Typography use="headline6" tag="h2">
-            Current scooters
+            {this.props.title}
           </Typography>
           <Typography
             use="subtitle2"
@@ -29,6 +29,13 @@ class Tile extends React.Component {
           </Typography>
           {this.props.children}
         </div>
+        {/*
+        <CardActions>
+          <CardActionIcons>
+            <CardAction use="more_vert" />
+          </CardActionIcons>
+        </CardActions>
+        */}
       </Card>
     );
   }
