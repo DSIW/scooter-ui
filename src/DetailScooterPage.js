@@ -42,18 +42,27 @@ class DetailScooterPage extends Component {
     return (
       <Grid>
         <GridCell span="8">
-          <Tile title={`Scooter ${licensePlate}`} style={{ width: '54rem' }}>
+          <Tile
+            title="Parking Positions"
+            subtitle={`Scooter ${licensePlate}`}
+            style={{ width: '54rem' }}
+          >
             <Map markers={markers} />
           </Tile>
         </GridCell>
 
         <GridCell span="4">
-          <Tile title="Energy Level" style={{ width: '26rem' }}>
+          <Tile
+            title="Energy Level"
+            subtitle={`Scooter ${licensePlate}`}
+            style={{ width: '26rem' }}
+          >
             <LineChart data={markers} x="_request_time" y="energy_level" />
           </Tile>
 
           <Tile
             title="Energy Distribution"
+            subtitle={`Scooter ${licensePlate}`}
             style={{ width: '26rem', marginTop: '10px' }}
           >
             <EnergyBarChart licensePlate={licensePlate} />

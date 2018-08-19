@@ -25,7 +25,7 @@ class Tile extends React.Component {
             theme="text-secondary-on-background"
             style={{ marginTop: '-1rem' }}
           >
-            Berlin
+            {this.props.subtitle}
           </Typography>
           {this.props.children}
         </div>
