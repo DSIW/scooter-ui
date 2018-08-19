@@ -15,28 +15,11 @@ class Map extends React.Component {
   state = {
     lng: 13.432808,
     lat: 52.488734,
-    zoom: 13,
-    markers: []
+    zoom: 13
   };
 
-  async componentDidMount() {
-    // const response = await fetch(`http://localhost:7000/scooters/license_plates/569ERE/positions`);
-    const response = await fetch(
-      `http://localhost:7000/scooters/license_plates/569ERE/positions/battery_swaps`
-    );
-    // const response = await fetch(`http://localhost:7000/scooters/positions/current`);
-    const json = await response.json();
-
-    const markers = json.positions.map(position => ({
-      ...position,
-      position: [position.longitude, position.latitude]
-    }));
-
-    this.setState({ markers });
-  }
-
   render() {
-    const { markers } = this.state;
+    const { markers } = this.props;
 
     const position = [this.state.lat, this.state.lng];
 

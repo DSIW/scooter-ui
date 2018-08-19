@@ -8,7 +8,23 @@ import Toolbar from './Toolbar';
 import Map from './Map';
 
 class App extends React.Component {
-  state = { drawerOpen: false };
+  state = { drawerOpen: false, markers: [] };
+
+  async componentDidMount() {
+    // const response = await fetch(`http://localhost:7000/scooters/license_plates/569ERE/positions`);
+    const response = await fetch(
+      `http://localhost:7000/scooters/license_plates/569ERE/positions/battery_swaps`
+    );
+    // const response = await fetch(`http://localhost:7000/scooters/positions/current`);
+    const json = await response.json();
+
+    const markers = json.positions.map(position => ({
+      ...position,
+      position: [position.longitude, position.latitude]
+    }));
+
+    this.setState({ markers });
+  }
 
   render() {
     return (
@@ -17,7 +33,7 @@ class App extends React.Component {
           <Toolbar />
 
           <div className="content">
-            <Map />
+            <Map markers={this.state.markers} />
           </div>
         </ThemeProvider>
       </RMWCProvider>
