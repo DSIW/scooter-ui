@@ -6,6 +6,8 @@ import { ThemeProvider } from 'rmwc/Theme';
 import Toolbar from './Toolbar';
 import DetailScooterPage from './DetailScooterPage';
 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 class App extends React.Component {
   state = { markers: [] };
 
@@ -18,7 +20,20 @@ class App extends React.Component {
           <Toolbar />
 
           <div className="content">
-            <DetailScooterPage licensePlate="569ERE" />
+            <Router>
+              <Route
+                render={({ location }) => (
+                  <Switch key={location.key}>
+                    <Route
+                      exact
+                      path="/scooters/:license_plate"
+                      location={location}
+                      component={DetailScooterPage}
+                    />
+                  </Switch>
+                )}
+              />
+            </Router>
           </div>
         </ThemeProvider>
       </RMWCProvider>

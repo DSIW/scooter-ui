@@ -10,6 +10,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-leaflet": "^2.0.1",
+    "react-router-dom": "^4.3.1",
     "recharts": "^1.1.0",
     "rmwc": "^1.8.3"
   },

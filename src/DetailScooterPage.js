@@ -6,12 +6,19 @@ import Map from './Map';
 import LineChart from './LineChart';
 
 class DetailScooterPage extends Component {
-  state = { markers: [] };
+  constructor(props) {
+    super(props);
+
+    const params = this.props.match.params;
+    const licensePlate = params.license_plate;
+
+    this.state = { licensePlate, markers: [] };
+  }
 
   async componentDidMount() {
     const response = await fetch(
       `http://localhost:7000/scooters/license_plates/${
-        this.props.licensePlate
+        this.state.licensePlate
       }/positions`
     );
     // const response = await fetch(
@@ -29,12 +36,12 @@ class DetailScooterPage extends Component {
   }
 
   render() {
-    const { markers } = this.state;
+    const { licensePlate, markers } = this.state;
 
     return (
       <Grid>
         <GridCell span="8">
-          <Tile title="Scooters" style={{ width: '54rem' }}>
+          <Tile title={`Scooter ${licensePlate}`} style={{ width: '54rem' }}>
             <Map markers={markers} />
           </Tile>
         </GridCell>
