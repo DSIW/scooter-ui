@@ -8,6 +8,7 @@ class Toolbar extends React.Component {
       <SimpleTopAppBar
         fixed={true}
         title="Scooter UI"
+        style={{ zIndex: 2000 }}
         actionItems={[
           { onClick: () => window.location.reload(), use: 'refresh' }
         ]}
