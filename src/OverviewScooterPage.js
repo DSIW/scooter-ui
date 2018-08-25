@@ -5,6 +5,7 @@ import Tile from './Tile';
 import Map from './Map';
 import LineChart from './LineChart';
 import EnergyBarChart from './EnergyBarChart';
+import NumberCard from './NumberCard';
 
 class OverviewScooterPage extends Component {
   constructor(props) {
@@ -40,12 +41,8 @@ class OverviewScooterPage extends Component {
         </GridCell>
 
         <GridCell span="4">
-          <Tile
-            title="Energy Level"
-            subtitle={`Time: ${lastRequestTime}`}
-            style={{ width: '26rem' }}
-          >
-            <LineChart data={positions} x="_request_time" y="energy_level" />
+          <Tile style={{ width: '26rem', paddingTop: '1em' }}>
+            <NumberCard title="# Scooters">{positions.length}</NumberCard>
           </Tile>
 
           <Tile
