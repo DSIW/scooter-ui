@@ -18,7 +18,10 @@ class PositionMarker extends React.Component {
     return (
       <Marker position={position.location.coordinates} icon={iconPosition}>
         <Popup>
-          {position.license_plate} ({position.energy_level}
+          <a href={`/scooters/${position.license_plate}`}>
+            {position.license_plate}
+          </a>{' '}
+          ({position.energy_level}
           %)
           <br />
           {position._request_time}
