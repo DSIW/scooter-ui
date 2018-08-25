@@ -3,7 +3,7 @@ import { Grid, GridCell } from 'rmwc/Grid';
 
 import Tile from './Tile';
 import Map from './Map';
-import LineChart from './LineChart';
+import RemoteLineChart from './RemoteLineChart';
 import EnergyBarChart from './EnergyBarChart';
 
 class DetailScooterPage extends Component {
@@ -22,10 +22,6 @@ class DetailScooterPage extends Component {
         this.state.licensePlate
       }/positions`
     );
-    // const response = await fetch(
-    //   `http://localhost:7000/scooters/license_plates/569ERE/positions/battery_swaps`
-    // );
-    // const response = await fetch(`http://localhost:7000/scooters/positions/current`);
     const json = await response.json();
     const positions = json.positions;
     this.setState({ positions });
@@ -42,7 +38,7 @@ class DetailScooterPage extends Component {
             subtitle={`Scooter ${licensePlate}`}
             style={{ width: '54rem' }}
           >
-            <Map positions={positions} />
+            <Map positions={positions} connected />
           </Tile>
         </GridCell>
 
@@ -52,10 +48,10 @@ class DetailScooterPage extends Component {
             subtitle={`Scooter ${licensePlate}`}
             style={{ width: '26rem' }}
           >
-            <LineChart
-              data={positions}
+            <RemoteLineChart
+              url={`http://localhost:7000/scooters/license_plates/${licensePlate}/positions`}
+              data="positions"
               x="_request_time"
-              xUnit="%"
               y="energy_level"
             />
           </Tile>

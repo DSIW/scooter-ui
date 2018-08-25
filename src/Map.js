@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { Fragment } from 'react';
 
-import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import {
+  Map as LeafletMap,
+  TileLayer,
+  Marker,
+  Polyline,
+  Popup
+} from 'react-leaflet';
 import Leaflet from 'leaflet';
-import pin from './pin-default-20x25.png';
+import pin from './pin-coup-20x25.png';
 
 const accessToken =
   'pk.eyJ1IjoiZHNpdyIsImEiOiJjaXB2bmt0M2wwMDVxaHdrc3AwM2N4OHk0In0.kHVayjzVrUycpA2prqRhOg';
@@ -41,6 +47,16 @@ class Map extends React.Component {
           attribution={attribution}
           url={`${url}?access_token=${accessToken}`}
         />
+
+        {this.props.connected && (
+          <Polyline
+            positions={markers.map(marker => marker.position)}
+            opacity={0.3}
+            color="#34495e"
+            weight={2}
+          />
+        )}
+
         {markers.map((marker, index) => (
           <Marker key={index} position={marker.position} icon={icon}>
             <Popup>
