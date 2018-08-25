@@ -13,7 +13,7 @@ class DetailScooterPage extends Component {
     const params = this.props.match.params;
     const licensePlate = params.license_plate;
 
-    this.state = { licensePlate, markers: [] };
+    this.state = { licensePlate, positions: [] };
   }
 
   async componentDidMount() {
@@ -27,17 +27,12 @@ class DetailScooterPage extends Component {
     // );
     // const response = await fetch(`http://localhost:7000/scooters/positions/current`);
     const json = await response.json();
-
-    const markers = json.positions.map(position => ({
-      ...position,
-      position: [position.longitude, position.latitude]
-    }));
-
-    this.setState({ markers });
+    const positions = json.positions;
+    this.setState({ positions });
   }
 
   render() {
-    const { licensePlate, markers } = this.state;
+    const { licensePlate, positions } = this.state;
 
     return (
       <Grid>
@@ -47,7 +42,7 @@ class DetailScooterPage extends Component {
             subtitle={`Scooter ${licensePlate}`}
             style={{ width: '54rem' }}
           >
-            <Map markers={markers} />
+            <Map positions={positions} />
           </Tile>
         </GridCell>
 
@@ -57,7 +52,7 @@ class DetailScooterPage extends Component {
             subtitle={`Scooter ${licensePlate}`}
             style={{ width: '26rem' }}
           >
-            <LineChart data={markers} x="_request_time" y="energy_level" />
+            <LineChart data={positions} x="_request_time" y="energy_level" />
           </Tile>
 
           <Tile
@@ -65,7 +60,9 @@ class DetailScooterPage extends Component {
             subtitle={`Scooter ${licensePlate}`}
             style={{ width: '26rem', marginTop: '10px' }}
           >
-            <EnergyBarChart licensePlate={licensePlate} />
+            <EnergyBarChart
+              url={`http://localhost:7000/scooters/license_plates/${licensePlate}/energy_level/distribution`}
+            />
           </Tile>
         </GridCell>
       </Grid>

@@ -19,7 +19,12 @@ class Map extends React.Component {
   };
 
   render() {
-    const { markers } = this.props;
+    const { positions } = this.props;
+
+    const markers = positions.map(position => ({
+      ...position,
+      position: [position.longitude, position.latitude]
+    }));
 
     const position = [this.state.lat, this.state.lng];
 
@@ -41,6 +46,8 @@ class Map extends React.Component {
             <Popup>
               {marker.license_plate} ({marker.energy_level}
               %)
+              <br />
+              {marker._request_time}
             </Popup>
           </Marker>
         ))}
