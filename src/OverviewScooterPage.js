@@ -4,6 +4,7 @@ import { Grid, GridCell } from 'rmwc/Grid';
 import Tile from './Tile';
 import Map from './Map';
 import LineChart from './LineChart';
+import RemoteLineChart from './RemoteLineChart';
 import EnergyBarChart from './EnergyBarChart';
 import NumberCard from './NumberCard';
 
@@ -28,6 +29,8 @@ class OverviewScooterPage extends Component {
   render() {
     const { lastRequestTime, positions } = this.state;
 
+    const lastDays = 3;
+
     return (
       <Grid>
         <GridCell span="8">
@@ -43,6 +46,19 @@ class OverviewScooterPage extends Component {
         <GridCell span="4">
           <Tile style={{ width: '26rem', paddingTop: '1em' }}>
             <NumberCard title="# Scooters">{positions.length}</NumberCard>
+          </Tile>
+
+          <Tile
+            title="Available Scooters"
+            subtitle={`Last ${lastDays} days`}
+            style={{ width: '26rem', marginTop: '10px' }}
+          >
+            <RemoteLineChart
+              url={`http://localhost:7000/scooters/positions/count/history/days/${lastDays}`}
+              key="history"
+              x="time"
+              y="count"
+            />
           </Tile>
 
           <Tile

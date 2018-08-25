@@ -52,7 +52,12 @@ class DetailScooterPage extends Component {
             subtitle={`Scooter ${licensePlate}`}
             style={{ width: '26rem' }}
           >
-            <LineChart data={positions} x="_request_time" y="energy_level" />
+            <LineChart
+              data={positions}
+              x="_request_time"
+              xUnit="%"
+              y="energy_level"
+            />
           </Tile>
 
           <Tile

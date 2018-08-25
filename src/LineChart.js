@@ -19,7 +19,7 @@ class LineChart extends React.Component {
         margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
       >
         <XAxis dataKey={this.props.x} hide={true} />
-        <YAxis unit="%" />
+        <YAxis unit={this.props.xUnit} />
         <Tooltip />
         <Line
           type="monotone"
