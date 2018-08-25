@@ -9,9 +9,7 @@ class RemoteLineChart extends React.Component {
 
     const json = await response.json();
 
-    const data = json['history'];
-
-    console.log(json);
+    const data = json[this.props.data];
 
     this.setState({ data });
   }

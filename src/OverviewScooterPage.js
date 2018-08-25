@@ -30,6 +30,7 @@ class OverviewScooterPage extends Component {
     const { lastRequestTime, positions } = this.state;
 
     const lastDays = 3;
+    const timeUnit = 'hour';
 
     return (
       <Grid>
@@ -55,8 +56,34 @@ class OverviewScooterPage extends Component {
           >
             <RemoteLineChart
               url={`http://localhost:7000/scooters/positions/count/history/days/${lastDays}`}
-              key="history"
+              data="history"
               x="time"
+              y="count"
+            />
+          </Tile>
+
+          <Tile
+            title="Available Scooters"
+            subtitle={`Per ${timeUnit}`}
+            style={{ width: '26rem', marginTop: '10px' }}
+          >
+            <RemoteLineChart
+              url={`http://localhost:7000/scooters/positions/count/per_time_unit/${timeUnit}`}
+              data="distribution"
+              x={timeUnit}
+              y="count"
+            />
+          </Tile>
+
+          <Tile
+            title="Available Scooters"
+            subtitle={`Per weekday`}
+            style={{ width: '26rem', marginTop: '10px' }}
+          >
+            <RemoteLineChart
+              url={`http://localhost:7000/scooters/positions/count/per_time_unit/dayOfWeek`}
+              data="distribution"
+              x="dayOfWeek"
               y="count"
             />
           </Tile>
