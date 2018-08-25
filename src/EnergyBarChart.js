@@ -1,16 +1,8 @@
 import * as React from 'react';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from 'recharts';
+import BarChart from './BarChart';
 
 class EnergyBarChart extends React.Component {
-  state = { markers: [] };
+  state = { distribution: [] };
 
   async componentDidMount() {
     const response = await fetch(this.props.url);
@@ -25,15 +17,11 @@ class EnergyBarChart extends React.Component {
   render() {
     return (
       <BarChart
-        width={400}
-        height={140}
         data={this.state.distribution}
-        margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
-      >
-        <XAxis dataKey="energy_level" hide={false} />
-        <Tooltip />
-        <Bar dataKey="count" fill="#34495e" />
-      </BarChart>
+        x="energy_level"
+        y="count"
+        hiddenYAxis
+      />
     );
   }
 }

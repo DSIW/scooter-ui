@@ -5,6 +5,7 @@ import Tile from './Tile';
 import RemoteLineChart from './RemoteLineChart';
 import EnergyBarChart from './EnergyBarChart';
 import DriveMap from './DriveMap';
+import BarChart from './BarChart';
 
 class DetailScooterPage extends Component {
   constructor(props) {
@@ -27,6 +28,16 @@ class DetailScooterPage extends Component {
 
   render() {
     const { licensePlate, drives } = this.state;
+
+    const round = (num, decimals) => {
+      const factor = Math.pow(10, decimals);
+      return Math.round(num * factor) / factor;
+    };
+
+    const distances = drives.map(({ from, distance }) => ({
+      time: from._request_time,
+      distance: round(distance / 1000, 1)
+    }));
 
     return (
       <Grid>
@@ -62,6 +73,14 @@ class DetailScooterPage extends Component {
             <EnergyBarChart
               url={`http://localhost:7000/scooters/${licensePlate}/energy_level/distribution`}
             />
+          </Tile>
+
+          <Tile
+            title="Distance Per Drive"
+            subtitle={`Scooter ${licensePlate}`}
+            style={{ width: '26rem', marginTop: '10px' }}
+          >
+            <BarChart data={distances} x="time" y="distance" hiddenXAxis />
           </Tile>
         </GridCell>
       </Grid>
