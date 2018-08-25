@@ -5,6 +5,7 @@ import { RMWCProvider } from 'rmwc/Provider';
 import { ThemeProvider } from 'rmwc/Theme';
 import Toolbar from './Toolbar';
 import DetailScooterPage from './DetailScooterPage';
+import OverviewScooterPage from './OverviewScooterPage';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -24,6 +25,12 @@ class App extends React.Component {
               <Route
                 render={({ location }) => (
                   <Switch key={location.key}>
+                    <Route
+                      exact
+                      path="/scooters/current"
+                      location={location}
+                      component={OverviewScooterPage}
+                    />
                     <Route
                       exact
                       path="/scooters/:license_plate"
