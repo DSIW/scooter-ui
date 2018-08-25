@@ -7,6 +7,7 @@ import PositionMarker from './PositionMarker';
 
 import pinFrom from './pin-from-20x25.png';
 import pinTo from './pin-to-20x25.png';
+import pinBatterySwap from './pin-battery-swap-20x25.png';
 
 class DriveMap extends React.Component {
   render() {
@@ -28,6 +29,10 @@ class DriveMap extends React.Component {
       <Map>
         {this.props.drives.map(({ from, to }, index) => (
           <Drive key={index} from={from} to={to} />
+        ))}
+
+        {this.props.batterySwaps.map((position, index) => (
+          <PositionMarker position={position} icon={pinBatterySwap} />
         ))}
       </Map>
     );

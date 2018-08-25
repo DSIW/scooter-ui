@@ -14,20 +14,25 @@ class DetailScooterPage extends Component {
     const params = this.props.match.params;
     const licensePlate = params.license_plate;
 
-    this.state = { licensePlate, drives: [] };
+    this.state = { licensePlate, drives: [], batterySwaps: [] };
   }
 
   async componentDidMount() {
-    const response = await fetch(
+    const drives = (await (await fetch(
       `http://localhost:7000/scooters/${this.state.licensePlate}/drives`
-    );
-    const json = await response.json();
-    const drives = json.drives;
-    this.setState({ drives });
+    )).json()).drives;
+
+    const batterySwaps = (await (await fetch(
+      `http://localhost:7000/scooters/${
+        this.state.licensePlate
+      }/positions/battery_swaps`
+    )).json()).positions;
+
+    this.setState({ drives, batterySwaps });
   }
 
   render() {
-    const { licensePlate, drives } = this.state;
+    const { licensePlate, drives, batterySwaps } = this.state;
 
     const round = (num, decimals) => {
       const factor = Math.pow(10, decimals);
@@ -43,11 +48,13 @@ class DetailScooterPage extends Component {
       <Grid>
         <GridCell span="8">
           <Tile
-            title={`${drives.length} Drives`}
+            title={`${drives.length} Drives / ${
+              batterySwaps.length
+            } Battery Swaps`}
             subtitle={`Scooter ${licensePlate}`}
             style={{ width: '54rem' }}
           >
-            <DriveMap drives={drives} />
+            <DriveMap drives={drives} batterySwaps={batterySwaps} />
           </Tile>
         </GridCell>
 
