@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Fragment } from 'react';
 
 import { Marker, Popup } from 'react-leaflet';
 import Leaflet from 'leaflet';

@@ -1,13 +1,6 @@
 import * as React from 'react';
 
-import {
-  Card,
-  CardPrimaryAction,
-  CardAction,
-  CardActionButtons,
-  CardActions,
-  CardActionIcons
-} from 'rmwc/Card';
+import { Card } from 'rmwc/Card';
 
 import { Typography } from 'rmwc/Typography';
 
@@ -29,13 +22,6 @@ class Tile extends React.Component {
           </Typography>
           {this.props.children}
         </div>
-        {/*
-        <CardActions>
-          <CardActionIcons>
-            <CardAction use="more_vert" />
-          </CardActionIcons>
-        </CardActions>
-        */}
       </Card>
     );
   }

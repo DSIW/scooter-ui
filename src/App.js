@@ -9,12 +9,8 @@ import OverviewScooterPage from './OverviewScooterPage';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-class App extends React.Component {
-  state = { markers: [] };
-
+class App extends Component {
   render() {
-    const { markers } = this.state;
-
     return (
       <RMWCProvider>
         <ThemeProvider options={{ primary: '#34495e', secondary: '#2980b9' }}>

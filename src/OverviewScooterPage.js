@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Grid, GridCell } from 'rmwc/Grid';
 
 import Tile from './Tile';
-import LineChart from './LineChart';
 import RemoteLineChart from './RemoteLineChart';
 import EnergyBarChart from './EnergyBarChart';
 import PositionMap from './PositionMap';
@@ -10,8 +9,6 @@ import PositionMap from './PositionMap';
 class OverviewScooterPage extends Component {
   constructor(props) {
     super(props);
-
-    const params = this.props.match.params;
 
     this.state = { lastRequestTime: 'No data', positions: [] };
   }

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Fragment } from 'react';
 
 import Map from './Map';
 import PositionMarker from './PositionMarker';
