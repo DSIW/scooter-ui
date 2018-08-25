@@ -41,8 +41,8 @@ class Map extends React.Component {
           attribution={attribution}
           url={`${url}?access_token=${accessToken}`}
         />
-        {markers.map(marker => (
-          <Marker position={marker.position} icon={icon}>
+        {markers.map((marker, index) => (
+          <Marker key={index} position={marker.position} icon={icon}>
             <Popup>
               {marker.license_plate} ({marker.energy_level}
               %)
