@@ -5,7 +5,6 @@ import Tile from './Tile';
 import LineChart from './LineChart';
 import RemoteLineChart from './RemoteLineChart';
 import EnergyBarChart from './EnergyBarChart';
-import NumberCard from './NumberCard';
 import PositionMap from './PositionMap';
 
 class OverviewScooterPage extends Component {
@@ -36,7 +35,7 @@ class OverviewScooterPage extends Component {
       <Grid>
         <GridCell span="8">
           <Tile
-            title="Parking Positions"
+            title={`${positions.length} Scooters`}
             subtitle={`Time: ${lastRequestTime}`}
             style={{ width: '54rem' }}
           >
@@ -45,14 +44,10 @@ class OverviewScooterPage extends Component {
         </GridCell>
 
         <GridCell span="4">
-          <Tile style={{ width: '26rem', paddingTop: '1em' }}>
-            <NumberCard title="# Scooters">{positions.length}</NumberCard>
-          </Tile>
-
           <Tile
             title="Available Scooters"
             subtitle={`Last ${lastDays} days`}
-            style={{ width: '26rem', marginTop: '10px' }}
+            style={{ width: '26rem' }}
           >
             <RemoteLineChart
               url={`http://localhost:7000/scooters/positions/count/history/days/${lastDays}`}

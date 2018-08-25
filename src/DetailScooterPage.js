@@ -43,7 +43,7 @@ class DetailScooterPage extends Component {
       <Grid>
         <GridCell span="8">
           <Tile
-            title="Drives"
+            title={`${drives.length} Drives`}
             subtitle={`Scooter ${licensePlate}`}
             style={{ width: '54rem' }}
           >
