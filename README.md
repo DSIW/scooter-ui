@@ -22,16 +22,22 @@ $ npm start
 
 This opens a browser pointing to `http://localhost:3000`.
 
-## UI
-
-![ui](scooter-ui-detail-example.png)
-
-## UI endpoints
+## Overview UI
 
 ```
 GET /scooters/current
-GET /scooters/:license_plate
 ```
+
+![ui](scooter-ui-overview.png)
+
+## Detail UI
+
+
+```
+GET /scooters/123XXX
+```
+
+![ui](scooter-ui-detail-example.png)
 
 ## License
 
