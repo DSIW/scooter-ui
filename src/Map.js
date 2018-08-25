@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import Leaflet from 'leaflet';
-import coupPin from './pin-default-20x25.png';
+import pin from './pin-default-20x25.png';
 
 const accessToken =
   'pk.eyJ1IjoiZHNpdyIsImEiOiJjaXB2bmt0M2wwMDVxaHdrc3AwM2N4OHk0In0.kHVayjzVrUycpA2prqRhOg';
@@ -29,7 +29,7 @@ class Map extends React.Component {
     const position = [this.state.lat, this.state.lng];
 
     const icon = Leaflet.icon({
-      iconUrl: coupPin,
+      iconUrl: pin,
       iconSize: [20, 25],
       iconAnchor: [10, 25], // half width of icon size
       popupAnchor: [0, -30]
