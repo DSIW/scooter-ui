@@ -37,7 +37,7 @@ GET /scooters/current
 GET /scooters/123XXX
 ```
 
-![ui](scooter-ui-detail-example.png)
+![ui](scooter-ui-detail.png)
 
 ## License
 
