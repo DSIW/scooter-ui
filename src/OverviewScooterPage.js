@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Grid, GridCell } from 'rmwc/Grid';
 
 import Tile from './Tile';
-import Map from './Map';
 import LineChart from './LineChart';
 import RemoteLineChart from './RemoteLineChart';
 import EnergyBarChart from './EnergyBarChart';
 import NumberCard from './NumberCard';
+import PositionMap from './PositionMap';
 
 class OverviewScooterPage extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class OverviewScooterPage extends Component {
             subtitle={`Time: ${lastRequestTime}`}
             style={{ width: '54rem' }}
           >
-            <Map positions={positions} />
+            <PositionMap positions={positions} />
           </Tile>
         </GridCell>
 

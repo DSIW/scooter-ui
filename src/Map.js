@@ -1,15 +1,6 @@
 import * as React from 'react';
-import { Fragment } from 'react';
 
-import {
-  Map as LeafletMap,
-  TileLayer,
-  Marker,
-  Polyline,
-  Popup
-} from 'react-leaflet';
-import Leaflet from 'leaflet';
-import pin from './pin-coup-20x25.png';
+import { Map as LeafletMap, TileLayer } from 'react-leaflet';
 
 const accessToken =
   'pk.eyJ1IjoiZHNpdyIsImEiOiJjaXB2bmt0M2wwMDVxaHdrc3AwM2N4OHk0In0.kHVayjzVrUycpA2prqRhOg';
@@ -25,21 +16,7 @@ class Map extends React.Component {
   };
 
   render() {
-    const { positions } = this.props;
-
-    const markers = positions.map(position => ({
-      ...position,
-      position: [position.longitude, position.latitude]
-    }));
-
     const position = [this.state.lat, this.state.lng];
-
-    const icon = Leaflet.icon({
-      iconUrl: pin,
-      iconSize: [20, 25],
-      iconAnchor: [10, 25], // half width of icon size
-      popupAnchor: [0, -30]
-    });
 
     return (
       <LeafletMap center={position} zoom={this.state.zoom}>
@@ -48,25 +25,7 @@ class Map extends React.Component {
           url={`${url}?access_token=${accessToken}`}
         />
 
-        {this.props.connected && (
-          <Polyline
-            positions={markers.map(marker => marker.position)}
-            opacity={0.3}
-            color="#34495e"
-            weight={2}
-          />
-        )}
-
-        {markers.map((marker, index) => (
-          <Marker key={index} position={marker.position} icon={icon}>
-            <Popup>
-              {marker.license_plate} ({marker.energy_level}
-              %)
-              <br />
-              {marker._request_time}
-            </Popup>
-          </Marker>
-        ))}
+        {this.props.children}
       </LeafletMap>
     );
   }

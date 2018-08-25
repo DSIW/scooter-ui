@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Grid, GridCell } from 'rmwc/Grid';
 
 import Tile from './Tile';
-import Map from './Map';
 import RemoteLineChart from './RemoteLineChart';
 import EnergyBarChart from './EnergyBarChart';
+import DriveMap from './DriveMap';
 
 class DetailScooterPage extends Component {
   constructor(props) {
@@ -13,30 +13,30 @@ class DetailScooterPage extends Component {
     const params = this.props.match.params;
     const licensePlate = params.license_plate;
 
-    this.state = { licensePlate, positions: [] };
+    this.state = { licensePlate, drives: [] };
   }
 
   async componentDidMount() {
     const response = await fetch(
-      `http://localhost:7000/scooters/${this.state.licensePlate}/positions`
+      `http://localhost:7000/scooters/${this.state.licensePlate}/drives`
     );
     const json = await response.json();
-    const positions = json.positions;
-    this.setState({ positions });
+    const drives = json.drives;
+    this.setState({ drives });
   }
 
   render() {
-    const { licensePlate, positions } = this.state;
+    const { licensePlate, drives } = this.state;
 
     return (
       <Grid>
         <GridCell span="8">
           <Tile
-            title="Parking Positions"
+            title="Drives"
             subtitle={`Scooter ${licensePlate}`}
             style={{ width: '54rem' }}
           >
-            <Map positions={positions} connected />
+            <DriveMap drives={drives} />
           </Tile>
         </GridCell>
 

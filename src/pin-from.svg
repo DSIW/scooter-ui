@@ -15,8 +15,8 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 2405546, 2018-03-11"
-   sodipodi:docname="pin-default.svg"
-   inkscape:export-filename="/home/dsiw/projects/drivenow/ui/src/pin-default-20x25.png"
+   sodipodi:docname="pin-from.svg"
+   inkscape:export-filename="/home/dsiw/projects/drivenow/ui/src/pin-from-20x25.png"
    inkscape:export-xdpi="26.940001"
    inkscape:export-ydpi="26.940001">
   <defs
@@ -28,11 +28,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.6480163"
-     inkscape:cx="-3.0148789"
-     inkscape:cy="26.50276"
+     inkscape:zoom="3.7375607"
+     inkscape:cx="33.121877"
+     inkscape:cy="33.095427"
      inkscape:document-units="mm"
-     inkscape:current-layer="g850"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="768"
@@ -81,6 +81,23 @@
          cx="26.976046"
          cy="70.781036"
          r="6.2114997" />
+      <path
+         transform="matrix(0.8007311,0,0,0.80497815,6.2445894,14.133156)"
+         inkscape:transform-center-x="-0.7053763"
+         d="m 28.533437,70.371948 -5.285493,3.051581 v -6.103161 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="1.0471976"
+         sodipodi:arg1="0"
+         sodipodi:r2="1.7618309"
+         sodipodi:r1="3.5236616"
+         sodipodi:cy="70.371948"
+         sodipodi:cx="25.009775"
+         sodipodi:sides="3"
+         id="path819"
+         style="opacity:1;fill:#0dcb87;fill-opacity:1;fill-rule:nonzero;stroke:#0dcb87;stroke-width:1.24555981;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+         sodipodi:type="star" />
     </g>
   </g>
 </svg>
