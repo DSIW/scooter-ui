@@ -7,12 +7,6 @@ import PositionMarker from './PositionMarker';
 import pin from './pin-default-20x25.png';
 
 class PositionMap extends React.Component {
-  state = {
-    lng: 13.432808,
-    lat: 52.488734,
-    zoom: 13
-  };
-
   render() {
     return (
       <Map>
