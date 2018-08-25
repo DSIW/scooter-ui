@@ -18,9 +18,7 @@ class DetailScooterPage extends Component {
 
   async componentDidMount() {
     const response = await fetch(
-      `http://localhost:7000/scooters/license_plates/${
-        this.state.licensePlate
-      }/positions`
+      `http://localhost:7000/scooters/${this.state.licensePlate}/positions`
     );
     const json = await response.json();
     const positions = json.positions;
@@ -49,7 +47,7 @@ class DetailScooterPage extends Component {
             style={{ width: '26rem' }}
           >
             <RemoteLineChart
-              url={`http://localhost:7000/scooters/license_plates/${licensePlate}/positions`}
+              url={`http://localhost:7000/scooters/${licensePlate}/positions`}
               data="positions"
               x="_request_time"
               y="energy_level"
@@ -62,7 +60,7 @@ class DetailScooterPage extends Component {
             style={{ width: '26rem', marginTop: '10px' }}
           >
             <EnergyBarChart
-              url={`http://localhost:7000/scooters/license_plates/${licensePlate}/energy_level/distribution`}
+              url={`http://localhost:7000/scooters/${licensePlate}/energy_level/distribution`}
             />
           </Tile>
         </GridCell>
