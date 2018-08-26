@@ -5,6 +5,7 @@ import Tile from './Tile';
 import RemoteLineChart from './RemoteLineChart';
 import EnergyBarChart from './EnergyBarChart';
 import PositionMap from './PositionMap';
+import SearchForm from './SearchForm';
 
 class OverviewScooterPage extends Component {
   constructor(props) {
@@ -30,6 +31,9 @@ class OverviewScooterPage extends Component {
 
     return (
       <Grid>
+        <GridCell span="12">
+          <SearchForm />
+        </GridCell>
         <GridCell span="8">
           <Tile
             title={`${positions.length} Scooters`}

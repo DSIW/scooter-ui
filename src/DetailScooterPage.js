@@ -6,6 +6,7 @@ import RemoteLineChart from './RemoteLineChart';
 import EnergyBarChart from './EnergyBarChart';
 import DriveMap from './DriveMap';
 import BarChart from './BarChart';
+import SearchForm from './SearchForm';
 
 class DetailScooterPage extends Component {
   constructor(props) {
@@ -46,6 +47,9 @@ class DetailScooterPage extends Component {
 
     return (
       <Grid>
+        <GridCell span="12">
+          <SearchForm licensePlate={licensePlate} />
+        </GridCell>
         <GridCell span="8">
           <Tile
             title={`${drives.length} Drives / ${
