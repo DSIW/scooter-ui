@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Marker, Popup } from 'react-leaflet';
 import Leaflet from 'leaflet';
+import { Link } from 'react-router-dom';
 
 class PositionMarker extends React.Component {
   render() {
@@ -15,11 +16,15 @@ class PositionMarker extends React.Component {
     });
 
     return (
-      <Marker position={position.location.coordinates} icon={iconPosition}>
+      <Marker
+        position={position.location.coordinates}
+        icon={iconPosition}
+        style={{ outline: 'none' }}
+      >
         <Popup>
-          <a href={`/scooters/${position.license_plate}`}>
+          <Link to={`/scooters/${position.license_plate}`}>
             {position.license_plate}
-          </a>{' '}
+          </Link>{' '}
           ({position.energy_level}
           %)
           <br />
